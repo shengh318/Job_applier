@@ -72,8 +72,11 @@ Rules:
 """
 
 
-def parse_llm_response(response: dict[str, Any]) -> dict[str, Any]:
+def parse_llm_response(response: str | dict[str, Any]) -> dict[str, Any]:
     """Parse and normalize LLM response into expected format."""
+    if isinstance(response, str):
+        response = json.loads(response)
+
     fields = response.get("fields", [])
     click = response.get("click")
     status = response.get("status", "unknown")
