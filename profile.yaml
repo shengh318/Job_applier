@@ -1,0 +1,27 @@
+name: "Your Name"
+email: "your@email.com"
+phone: "+1-555-123-4567"
+location: "San Francisco, CA"
+linkedin: "linkedin.com/in/yourname"
+
+work_history:
+  - company: "Previous Company"
+    title: "Software Engineer"
+    duration: "2 years"
+    description: "Built X, Y, Z"
+
+education:
+  - school: "University of California"
+    degree: "BS Computer Science"
+    year: "2020"
+
+skills:
+  - Python
+  - JavaScript
+  - React
+
+screening_answers:
+  years_experience: "5"
+  visa_status: "US Citizen"
+  willing_to_relocate: "Yes"
+  salary_expectation: "120000"

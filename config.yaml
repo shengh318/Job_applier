@@ -1,0 +1,18 @@
+llm:
+  provider: ollama
+  model: llama3
+  api_url: http://localhost:11434
+  api_key: ""
+
+search:
+  title: "Software Engineer"
+  location: "San Francisco"
+  remote_only: true
+
+profile:
+  file: ./profile.yaml
+  resume: ./resume.pdf
+
+notifications:
+  desktop: true
+  log_file: ./logs/applications.jsonl
