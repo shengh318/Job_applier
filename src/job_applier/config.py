@@ -2,6 +2,7 @@
 """Configuration loading and validation."""
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -51,7 +52,7 @@ def _parse_config(data: dict[str, Any]) -> Config:
     profile_data = data.get("profile", {})
     notif_data = data.get("notifications", {})
 
-    return Config(
+    cfg = Config(
         llm=LLMConfig(
             provider=llm_data.get("provider", "ollama"),
             model=llm_data.get("model", "llama3"),
@@ -72,6 +73,13 @@ def _parse_config(data: dict[str, Any]) -> Config:
             log_file=notif_data.get("log_file", "./logs/applications.jsonl"),
         ),
     )
+
+    # Resolve env:VAR references in api_key
+    if cfg.llm.api_key.startswith("env:"):
+        env_var = cfg.llm.api_key[4:]
+        cfg.llm.api_key = os.environ.get(env_var, "")
+
+    return cfg
 
 
 def load_config(path: str) -> Config:
