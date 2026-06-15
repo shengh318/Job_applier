@@ -87,11 +87,12 @@ class Runner:
                 )
 
                 if result["status"] == "applied":
-                    self.notifications.notify(f"Applied to {job['title']} at {job['company']}")
+                    self.notifications.notify("Job Applier", f"Applied to {job['title']} at {job['company']}")
                     logger.info("Successfully applied to %s", job["title"])
                 elif result["status"] == "needs_input":
                     self.notifications.notify(
-                        f"Needs input for {job['title']}: {result.get('message', '')}"
+                        "Job Applier",
+                        f"Needs input for {job['title']}: {result.get('message', '')}",
                     )
                     logger.warning("Needs input for %s: %s", job["title"], result.get("message", ""))
                 else:
