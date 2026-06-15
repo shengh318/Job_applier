@@ -97,8 +97,9 @@ class ApplicationEngine:
                 await self._click_button(tab_id, parsed["click"])
             account = parsed["account"]
             self.accounts.store(domain, account["email"], account["password"])
-            self.notifications.send_desktop(
-                f"Account created on {domain}\nEmail: {account['email']}\nPassword: {account['password']}"
+            self.notifications.notify(
+                f"Account created on {domain}",
+                f"Email: {account['email']}\nPassword: {account['password']}",
             )
             return True
 
